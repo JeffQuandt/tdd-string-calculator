@@ -1,6 +1,6 @@
 class StringCalc {
 
-    Integer calculate(String numbers){
+    Integer add(String numbers){
 
     }
 }
