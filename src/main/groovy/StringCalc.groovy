@@ -1,7 +1,10 @@
 class StringCalc {
 
     Integer add(String numbers) {
-
-        Integer.valueOf(numbers)
+        def sum = 0
+        if (numbers) {
+            sum += Integer.valueOf(numbers)
+        }
+        sum
     }
 }
