@@ -1,17 +1,40 @@
 class StringCalc {
 
+    def customDelimPtrn = ~/(?s)\/\/(.+?)\n(.+)/
+
     Integer add(String numbers) {
+        def separator = ",|\n"
         def sum = 0
+        def negativeNumbersFound = new StringJoiner(",")
         if (numbers) {
-            def index = numbers.indexOf(',')
-            while (index != -1) {
-                def value = numbers.substring(0, index)
-                numbers = numbers.substring(index+1)
-                sum += Integer.valueOf(value)
-                index = numbers.indexOf(',')
+            (numbers, separator) = checkForCustomSeparator(numbers, separator)
+            numbers.split(separator).each {
+
+                def value = Integer.valueOf(it)
+                if (value < 0) {
+                    negativeNumbersFound.add(it)
+                } else if(value <= 1000) {
+                    sum += value
+                }
             }
-            sum += Integer.valueOf(numbers)
         }
+
+        throwErrorIfNegativesPresent(negativeNumbersFound)
         sum
+    }
+
+    private void throwErrorIfNegativesPresent(StringJoiner negativeNumbersFound) {
+        if (negativeNumbersFound.toString()) {
+            throw new IllegalArgumentException("Negative numbers are not allowed! Negative numbers: ${negativeNumbersFound.toString()}")
+        }
+    }
+
+    private List checkForCustomSeparator(String numbers, String separator) {
+        def matcher = numbers =~ customDelimPtrn
+        if (matcher) {
+            separator += "|" + matcher[0][1]
+            numbers = matcher[0][2]
+        }
+        [numbers, separator]
     }
 }
