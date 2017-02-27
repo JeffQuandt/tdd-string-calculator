@@ -27,9 +27,16 @@ class StringCalcSpec extends Specification{
     def "should return sum for two comma-separated numbers "() {
 
         when:
-        def sum = calc.add("1,2")
+        def sum = calc.add(numberOne + "," + numberTwo)
 
         then:
-        sum == 3
+        sum == numberOne + numberTwo
+
+        where:
+        numberOne | numberTwo
+        0 | 0
+        0 | 1
+        2 | 4
+        3 | 7
     }
 }
