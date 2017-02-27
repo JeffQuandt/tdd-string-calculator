@@ -4,15 +4,13 @@ class StringCalc {
         def sum = 0
         if (numbers) {
             def index = numbers.indexOf(',')
-            String num1 = numbers
-            if (index != -1) {
-                num1 = numbers.substring(0, index)
-                if (index < numbers.length()) {
-                    def num2 = numbers.substring(index + 1, numbers.length())
-                    sum += Integer.valueOf(num2)
-                }
+            while (index != -1) {
+                def value = numbers.substring(0, index)
+                numbers = numbers.substring(index+1)
+                sum += Integer.valueOf(value)
+                index = numbers.indexOf(',')
             }
-            sum += Integer.valueOf(num1)
+            sum += Integer.valueOf(numbers)
         }
         sum
     }
