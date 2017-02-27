@@ -3,6 +3,9 @@ version '1.0-SNAPSHOT'
 
 apply plugin: 'groovy'
 
+sourceCompatibility=1.8
+targetCompatibility=1.8
+
 repositories {
     mavenCentral()
 }
@@ -15,5 +18,4 @@ dependencies {
     compile "org.apache.commons:commons-lang3:3.4"
     testCompile "org.spockframework:spock-core:1.1-groovy-2.4-rc-3"
     testRuntime "com.athaydes:spock-reports:1.+"
-
 }
