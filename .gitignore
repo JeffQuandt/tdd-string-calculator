@@ -32,3 +32,4 @@ out
 gen
 /.gradle/
 !/gradle/wrapper/gradle-wrapper.jar
+/build/
