@@ -1,6 +1,6 @@
 import spock.lang.Specification
 
-class StringCalcSpec extends Specification{
+class StringCalcSpec extends Specification {
 
     StringCalc calc = new StringCalc()
 
@@ -34,9 +34,25 @@ class StringCalcSpec extends Specification{
 
         where:
         numberOne | numberTwo
-        0 | 0
-        0 | 1
-        2 | 4
-        3 | 7
+        0         | 0
+        0         | 1
+        2         | 4
+        3         | 7
+    }
+
+    def "should return sum for three comma-separated numbers "() {
+
+        when:
+        def sum = calc.add(numberOne + "," + numberTwo + "," + numberThree)
+
+        then:
+        sum == numberOne + numberTwo + numberThree
+
+        where:
+        numberOne | numberTwo | numberThree
+        0         | 0         | 0
+        0         | 1         | 2
+        2         | 4         | 2
+        3         | 7         | 87
     }
 }
