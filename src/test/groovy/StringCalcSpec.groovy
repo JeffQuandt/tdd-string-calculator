@@ -13,4 +13,14 @@ class StringCalcSpec extends Specification{
         sum == 0
     }
 
+    def "should return value for single number"() {
+        when:
+        def sum = calc.add(singleNumber.toString())
+
+        then:
+        sum == singleNumber
+
+        where:
+        singleNumber << (1..10)
+    }
 }
