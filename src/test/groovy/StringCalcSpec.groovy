@@ -23,4 +23,13 @@ class StringCalcSpec extends Specification{
         where:
         singleNumber << (1..10)
     }
+
+    def "should return sum for two comma-separated numbers "() {
+
+        when:
+        def sum = calc.add("1,2")
+
+        then:
+        sum == 3
+    }
 }
