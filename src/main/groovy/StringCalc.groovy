@@ -1,6 +1,7 @@
 class StringCalc {
 
-    Integer add(String numbers){
-        return 0
+    Integer add(String numbers) {
+
+        Integer.valueOf(numbers)
     }
 }
